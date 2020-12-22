@@ -1,0 +1,17 @@
+{
+    "name": "word-blocker",
+    "description": "Blocks passages on webpages that include a word the user has muted.",
+    "version": "0.1.0",
+    "manifest_version": 2,
+    "icons": {
+        "128": "./monkey_icon.png"
+    },
+    "background": { 
+        "scripts" :["./background.js"]
+    },
+    "options_page": "./options.html",
+    "browser_action": {
+        "default_popup": "popup.html"
+    }, 
+    "permissions": ["tabs", "https://*", "storage", "http://*"] 
+}
