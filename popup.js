@@ -32,3 +32,6 @@ function setup() {
       }
     }
   }
+
+  //add event listener in popup.js for a button 
+  //send the data to storage 
