@@ -6,6 +6,8 @@
     "icons": {
         "128": "./monkey_icon.png"
     },
+    //"content_security_policy": "script-src 'self' 'sha256-LZS9dpMeF5ep02jQRqklRKxoeFVFCnb4wGEAY3CF0i8='",
+    //"content_security_policy": "script-src <popup.html>",
     "background": { 
         "scripts" :["./background.js"]
     },
@@ -14,4 +16,5 @@
         "default_popup": "popup.html"
     }, 
     "permissions": ["<all_urls>", "tabs", "storage"]
+
 }

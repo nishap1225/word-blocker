@@ -3,13 +3,19 @@
   <head>
     <meta charset="UTF-8">
     <title>Word Blocker Popup</title>
-    <script src="popup.js" type="text/javascript"></script>
+    <script src="popup.js" type="text/javascript"></script> 
   </head>
   <body>
     <h1>Word Blocker</h1>
     <p>
-      color: <input type="text" id="color" value="#FFFFFF"/><br/>
-      size: <input id="size" type="range" min="10" max="200" value="100"/>
+      Enter New Word: <input type="text" id="new_word" value=""/><br/>
+      <input id="submit" type="button" value="Submit"/>
     </p>
+    <p id = "demo"></p>
   </body>
 </html>
+
+<!-- input for new words, submit button, list of all the words, button to toggle off the extension (expand to toggle each individual censoring?) -->
+<!-- also add functionality to be able to delete words from our list of blocked words --> 
+
+<!-- error on chrome:// pages, fix later -->
