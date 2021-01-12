@@ -49,7 +49,7 @@ for (var i = 0; i < elements.length; i++) {
             chrome.storage.sync.get(null, function(result) {  
                 storageArray = result['words']; 
             });
-            //console.log('got storage array');
+            console.log('got storage array');
             if (storageArray != null) {
                 //console.log('array is not null');
                 var text = node.nodeValue; 
@@ -58,7 +58,8 @@ for (var i = 0; i < elements.length; i++) {
                     var length = storageArray[i].length; 
                     var censor = new Array(length+1).join('*');
                     var replacedText = text.replace(word,censor);
-                    if (replacedText.localeCompare(text) != 0) {
+                    if (replacedText !== text) { //replacedText.localeCompare(text) != 0
+                        console.log('replacing text');
                         element.replaceChild(document.createTextNode(replacedText), node);
                     }
                 } 
