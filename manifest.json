@@ -23,13 +23,21 @@
     "description": "Blocks passages on webpages that include a word the user has muted.",
     "version": "0.1.0",
     "manifest_version": 2,
+    "icons": {
+        "128": "./monkey_icon.png"
+    },
     "content_scripts": [ 
         {
             "matches": ["http://*/*", "https://*/*"], 
             "js": ["contentScript.js"], 
             "run_at": "document_idle" //ready state? 
+            // later, try to use on activated 
 
         }
     ], 
+    "options_page": "./options.html",
+    "browser_action": {
+        "default_popup": "popup.html"
+    }, 
     "permissions": ["storage"]
 }
