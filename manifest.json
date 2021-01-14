@@ -1,5 +1,5 @@
 {
-    "name": "word-blocker",
+    "name": "Word Blocker",
     "description": "Blocks passages on webpages that include a word the user has muted.",
     "version": "0.1.0",
     "manifest_version": 2,
