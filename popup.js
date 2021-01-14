@@ -40,8 +40,45 @@ function deleteWord() {
 });
 }
 
+function switchBlockSimilar() {
+  chrome.storage.sync.get(null, function(result) {
+    var block_similar = result['similar'];
+    if (block_similar == null) {
+      block_similar = false;
+    }
+    chrome.storage.sync.set({'similar': !block_similar}, function() {
+      if (block_similar) {
+        document.getElementById('block_similar').value = 'Block Similar Words: OFF';
+      } else {
+        document.getElementById('block_similar').value = 'Block Similar Words: ON';
+      }
+    });
+
+  });
+
+}
+
+function switchBlockPassage() {
+  chrome.storage.sync.get(null, function(result) {
+    var block_passage = result['passage'];
+    if (block_passage == null) {
+      block_passage = false;
+    }
+    chrome.storage.sync.set({'passage': !block_passage}, function() {
+      if (block_similar) {
+        document.getElementById('block_passage').value = 'Block Passages w/ Word: OFF';
+      } else {
+        document.getElementById('block_passage').value = 'Block Passages w/ Word: ON';
+      }
+    });
+
+  });
+
+}
+
+
 window.onload = function() {
-  populateList(); //i think this should be called instead of new word 
+  populateList(); //i think this should be called instead of new word
   var button = document.getElementById("submit");
   if (button.addEventListener)
     button.addEventListener("click", newWord, false);
@@ -53,6 +90,18 @@ window.onload = function() {
     delete_button.addEventListener("click", deleteWord, false);
   else if (delete_button.attachEvent)
     delete_button.attachEvent('onclick', deleteWord);
+
+  var block_similar_button = document.getElementById("block_similar");
+  if (block_similar_button.addEventListener)
+    block_similar_button.addEventListener("click", switchBlockSimilar, false);
+  else if (block_similar_button.attachEvent)
+    block_similar_button.attachEvent('onclick', switchBlockSimilar);
+
+  var block_passage_button = document.getElementById("block_passage");
+  if (block_passage_button.addEventListener)
+    block_passage_button.addEventListener("click", switchBlockPassage, false);
+  else if (block_passage_button.attachEvent)
+    block_passage_button.attachEvent('onclick', switchBlockPassage);
   
 }
 
