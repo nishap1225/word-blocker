@@ -5,12 +5,12 @@ chrome.storage.sync.get(null, function(result) {
         //<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
         var script = document.createElement('script');
         script.src = 'https://cdn.jsdelivr.net/npm/@tensorflow/tfjs';
-        script.type = 'text/javascript';
+        //script.type = 'text/javascript';
         document.getElementsByTagName('head')[0].appendChild(script);
         //<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/universal-sentence-encoder"></script>
         var script_two = document.createElement('script');
         script_two.src = 'https://cdn.jsdelivr.net/npm/@tensorflow-models/universal-sentence-encoder';
-        script_two.type = 'text/javascript';
+        //script_two.type = 'text/javascript';
         document.getElementsByTagName('head')[0].appendChild(script_two);
 
         var elements = document.getElementsByTagName('*');
