@@ -65,10 +65,10 @@ function switchBlockPassage() {
       block_passage = false;
     }
     chrome.storage.sync.set({'passage': !block_passage}, function() {
-      if (block_similar) {
-        document.getElementById('block_passage').value = 'Block Passages w/ Word: OFF';
+      if (block_passage) {
+        document.getElementById('block_passage').value = 'Block Passages: OFF';
       } else {
-        document.getElementById('block_passage').value = 'Block Passages w/ Word: ON';
+        document.getElementById('block_passage').value = 'Block Passages: ON';
       }
     });
 
