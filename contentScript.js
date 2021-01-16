@@ -1,16 +1,32 @@
+// <!-- Load TensorFlow.js. This is required to use the qna model. -->
+// <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
+// <!-- Load the qna model. -->
+// <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/qna"> </script>
+
+// <!-- Place your code in the script tag below. You can also use an external .js file -->
+// <script>
+//   // Notice there is no 'import' statement. 'qna' and 'tf' is
+//   // available on the index-page because of the script tag above.
+//   // Load the model.
+//   qna.load().then(model => {
+//     model.findAnswers(question, passage).then(answers => {
+//       console.log('Answers: ', answers);
+//     });
+//   });
+// </script>
+
 chrome.storage.sync.get(null, function(result) {  
     var storageArray = result['words'];
     var block_similar = result['similar'];
     if (block_similar) {
-        //<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
         var script = document.createElement('script');
         script.src = 'https://cdn.jsdelivr.net/npm/@tensorflow/tfjs';
-        //script.type = 'text/javascript';
+        script.type = 'text/javascript';
         document.getElementsByTagName('head')[0].appendChild(script);
-        //<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/universal-sentence-encoder"></script>
         var script_two = document.createElement('script');
-        script_two.src = 'https://cdn.jsdelivr.net/npm/@tensorflow-models/universal-sentence-encoder';
-        //script_two.type = 'text/javascript';
+        //script_two.src = 'https://cdn.jsdelivr.net/npm/@tensorflow-models/universal-sentence-encoder';
+        script_two.src = 'https://cdn.jsdelivr.net/npm/@tensorflow-models/qna';
+        script_two.type = 'text/javascript';
         document.getElementsByTagName('head')[0].appendChild(script_two);
 
         var elements = document.getElementsByTagName('*');
@@ -42,14 +58,16 @@ chrome.storage.sync.get(null, function(result) {
             }
         }
         // Load the model.
-        use.load().then(model => {
-            // Embed an array of sentences.
-            model.embed(sentences).then(embeddings => {
-            // `embeddings` is a 2D tensor consisting of the 512-dimensional embeddings for each sentence.
-            // So in this example `embeddings` has the shape [2, 512].
-                console.log('embedded sentences');
-            });
-        });
+        //require('@tensorflow/tfjs');
+        //const use = require('@tensorflow-models/universal-sentence-encoder');
+        // qna.load().then(model => {
+        //     // Embed an array of sentences.
+        //     model.embed(sentences).then(embeddings => {
+        //     // `embeddings` is a 2D tensor consisting of the 512-dimensional embeddings for each sentence.
+        //     // So in this example `embeddings` has the shape [2, 512].
+        //         console.log('embedded sentences');
+        //     });
+        // });
   
 
     } else {
