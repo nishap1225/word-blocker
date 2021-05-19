@@ -43,14 +43,12 @@ function deleteWord() {
 function switchBlockSimilar() {
   chrome.storage.sync.get(null, function(result) {
     var block_similar = result['similar'];
-    if (block_similar == null) {
-      block_similar = false;
-    }
     chrome.storage.sync.set({'similar': !block_similar}, function() {
+      //console.log('switch block similar to' + !block_similar);
       if (block_similar) {
-        document.getElementById('block_similar').value = 'Block Similar Words: OFF';
+        document.getElementById('block_similar').value = 'Block Similar Sentences: OFF';
       } else {
-        document.getElementById('block_similar').value = 'Block Similar Words: ON';
+        document.getElementById('block_similar').value = 'Block Similar Sentences: ON';
       }
     });
 
@@ -61,14 +59,11 @@ function switchBlockSimilar() {
 function switchBlockPassage() {
   chrome.storage.sync.get(null, function(result) {
     var block_passage = result['passage'];
-    if (block_passage == null) {
-      block_passage = false;
-    }
     chrome.storage.sync.set({'passage': !block_passage}, function() {
       if (block_passage) {
-        document.getElementById('block_passage').value = 'Block Passages: OFF';
+        document.getElementById('block_passage').value = 'Block Whole Sentences: OFF';
       } else {
-        document.getElementById('block_passage').value = 'Block Passages: ON';
+        document.getElementById('block_passage').value = 'Block Whole Sentences: ON';
       }
     });
 
@@ -79,6 +74,24 @@ function switchBlockPassage() {
 
 window.onload = function() {
   populateList(); //i think this should be called instead of new word
+  //checking block passage
+  chrome.storage.sync.get(null, function(result) {
+    var block_passage = result['passage'];
+    if (block_passage == null) {
+      chrome.storage.sync.set({'passage': false});
+    } else if (block_passage) {
+      document.getElementById('block_passage').value = 'Block Whole Sentences: ON';
+    }
+  });
+  //checking block similar
+  chrome.storage.sync.get(null, function(result) {
+    var block_passage = result['similar'];
+    if (block_passage == null) {
+      chrome.storage.sync.set({'similar': false});
+    } else if (block_passage) {
+      document.getElementById('block_similar').value = 'Block Similar Sentences: ON';
+    }
+  });
   var button = document.getElementById("submit");
   if (button.addEventListener)
     button.addEventListener("click", newWord, false);
